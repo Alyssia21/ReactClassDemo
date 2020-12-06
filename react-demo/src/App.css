@@ -1,7 +1,21 @@
+
 .App {
   text-align: center;
+  background-color:pink;
 }
-
+h1{ font-family: Cursive;}
+body {
+  background-color: white;
+   background-image: url("image/Blackflowerback.jpg");
+  color: black;
+  padding: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+  font-family: Sans-serif;
+  text-align: center;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -14,7 +28,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: pink;
   min-height: 100vh;
   display: flex;
   flex-direction: column;

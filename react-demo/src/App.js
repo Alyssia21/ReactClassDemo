@@ -2,13 +2,14 @@ import React, { Component }  from 'react';
 import logo from './logo.svg';
 import './App.css';
 import TaskList from './TaskList';
-
 class App extends Component {
     constructor(){
         super()
         this.state = {
-            todoList: ['item2', 'item 1'],
-            task: ''
+            completed: [],
+            todoList: [],
+            task: '',
+            
         }
     }
     render(){
@@ -19,14 +20,14 @@ class App extends Component {
                     <input
                         type='text'
                         className='input'
-                        placeholder='Enter Todo Item'
+                        placeholder='Enter Task'
                         value={this.state.task}
                         onChange={(e) => this.setState({task: e.target.value})}
                     />
-                    <button type='submit'>Add Todo</button>
+                    <button type='submit'>Add Task</button>
                 </form>
                 <TaskList title={'Pending Todo'} buttonText={'Done'} tasks={this.state.todoList} buttonFunction={this.removeTodo} />
-                <TaskList title={'Completed'} buttonText={"Delete"} tasks={['done']} buttonFunction={this.deleteTodo} />
+                <TaskList title={'Completed'} buttonText={"Delete"} tasks={this.state.completed} buttonFunction={this.deleteTodo} />
             </div>
         );
     }
@@ -40,10 +41,17 @@ class App extends Component {
         if(index > -1){
             todoList.splice(index, 1);
             this.setState({todoList: todoList})
+            this.setState({completed:[...this.state.completed, key]});
         }
     }
 
     deleteTodo = key =>{
+        let completed = this.state.completed;
+        let index = completed.indexOf(key);
+        if(index > -1){
+            completed.splice(index,1);
+            this.setState({completed: completed});
+        }
         console.log(key)
     }
 }
